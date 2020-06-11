@@ -6,10 +6,10 @@ using DotnetSpider.Kafka;
 using DotnetSpider.Portal.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace DotnetSpider.Portal
 {
@@ -35,7 +35,7 @@ namespace DotnetSpider.Portal
 				builder.AddSpiderStatisticsCenter(x => x.UseMemory());
 			});
 
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+			services.AddMvc();//.SetCompatibilityVersion(CompatibilityVersion.Latest);
 
 			services.AddScoped<PortalOptions>();
 			// Add DbContext            
@@ -65,7 +65,7 @@ namespace DotnetSpider.Portal
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			Ioc.ServiceProvider = app.ApplicationServices;
 			
@@ -83,7 +83,7 @@ namespace DotnetSpider.Portal
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseMvc(routes =>
+			app.UseRouter(routes =>
 			{
 				routes.MapRoute(
 					name: "default",

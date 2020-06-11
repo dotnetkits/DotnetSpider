@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <OutputType>Exe</OutputType>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
 
-        <ProjectReference Include="..\DotnetSpider.Kafka\DotnetSpider.Kafka.csproj"/>
+        <ProjectReference Include="..\DotnetSpider.Kafka\DotnetSpider.Kafka.csproj" />
 
-        <ProjectReference Include="..\DotnetSpider\DotnetSpider.csproj"/>
+        <ProjectReference Include="..\DotnetSpider\DotnetSpider.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -20,7 +20,7 @@
         </Content>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Confluent.Kafka" Version="1.0.0-RC4"/>
-        <PackageReference Include="librdkafka.redist" Version="1.0.0"/>
+        <PackageReference Include="Confluent.Kafka" Version="1.4.3" />
+        <PackageReference Include="librdkafka.redist" Version="1.4.2" />
     </ItemGroup>
 </Project>
